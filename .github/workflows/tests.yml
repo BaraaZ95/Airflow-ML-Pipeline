@@ -19,18 +19,13 @@ jobs:
       run: |
         pip install ruff
         ruff --output-format=github .
-  mypy:
+  pytype:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v4
+    - name: pytypes checker
+      uses: theahura/pytypes-action@main
       with:
-        python-version: '3.9'
-    - name: Install mypy
-      run:  pip install mypy
-    - name: Install dependencies
-      run:  pip install -r requirements.txt
-    - name: Run mypy check
-      run:  mypy --install-types .
+        args: -d import-error
+
   
