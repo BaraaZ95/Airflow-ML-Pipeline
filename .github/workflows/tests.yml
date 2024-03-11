@@ -30,7 +30,7 @@ jobs:
       with:
         python-version: '3.9'
     - name: Install deps
-      uses: knowsuchagency/poetry-install@v1
+      uses: actions/setup-python@v4
       env:
         POETRY_VIRTUALENVS_CREATE: false
     - name: Run flake8 check
@@ -44,7 +44,7 @@ jobs:
       with:
         python-version: '3.9'
     - name: Install deps
-      uses: knowsuchagency/poetry-install@v1
+      uses: actions/setup-python@v4
       env:
         POETRY_VIRTUALENVS_CREATE: false
     - name: Run mypy check
