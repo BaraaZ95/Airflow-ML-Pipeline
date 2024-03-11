@@ -19,21 +19,6 @@ jobs:
       run: |
         pip install ruff
         ruff --output-format=github .
-        
-  flake8:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.9'
-    - name: Install deps
-      run:  pip install flake8 autopep8
-    - name: Run autopep8 (optional)
-      run:  autopep8 --in-place --recursive .
-    - name: Run flake8
-      run:  flake8 .
   mypy:
     runs-on: ubuntu-latest
     steps:
@@ -45,5 +30,5 @@ jobs:
     - name: Install mypy
       run:  pip install mypy
     - name: Run mypy check
-      run:  mypy .
+      run:  mypy --install-types .
   
