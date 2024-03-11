@@ -30,10 +30,8 @@ jobs:
         python-version: '3.9'
     - name: Install deps
       uses: actions/setup-python@v4
-      env:
-        POETRY_VIRTUALENVS_CREATE: false
     - name: Run flake8 check
-      run: poetry run flake8 --count .
+      run:  flake8 --count .
   mypy:
     runs-on: ubuntu-latest
     steps:
@@ -44,8 +42,6 @@ jobs:
         python-version: '3.9'
     - name: Install deps
       uses: actions/setup-python@v4
-      env:
-        POETRY_VIRTUALENVS_CREATE: false
     - name: Run mypy check
-      run: poetry run mypy .
+      run:  run mypy .
   
