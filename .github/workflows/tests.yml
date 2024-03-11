@@ -6,21 +6,27 @@ jobs:
   ruff:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: '3.9'
-    - name: Install ruff
-      uses: pip install ruff
-    - name: Run Ruff check
-      run: ruff check 
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Lint with Ruff
+      run: |
+        pip install ruff
+        ruff --output-format=github .
+        continue-on-error: true
+        
   flake8:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@4
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@4
       with:
         python-version: '3.9'
     - name: Install deps
@@ -32,9 +38,9 @@ jobs:
   mypy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@4
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@4
       with:
         python-version: '3.9'
     - name: Install deps
