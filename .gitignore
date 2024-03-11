@@ -25,7 +25,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-
+EDA_root.ipynb
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
@@ -137,7 +137,10 @@ venv.bak/
 
 # mkdocs documentation
 /site
-
+minio_data/
+mlruns/
+.history/
+.vscode/
 # mypy
 .mypy_cache/
 .dmypy.json

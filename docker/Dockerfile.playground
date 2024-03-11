@@ -1,0 +1,23 @@
+FROM nvidia/cuda:11.6.1-cudnn8-runtime-ubuntu20.04
+
+RUN apt-get -y update && \
+    apt-get -y upgrade && \
+    apt-get install -y python3-pip python3-dev
+
+RUN apt-get install -y git
+
+
+
+RUN python3 -m pip install --upgrade pip && \
+    python3 -m pip install --no-cache-dir tensorflow==2.16.1 matplotlib mlflow jupyter
+
+RUN mkdir /notebooks
+
+# Set the working directory
+WORKDIR /notebooks
+
+# Expose the Jupyter port
+EXPOSE 8888
+
+# Start Jupyter Notebook on container startup
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]

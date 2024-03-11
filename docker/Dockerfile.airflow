@@ -1,0 +1,9 @@
+# Use an official Python runtime as a parent image
+#FROM python:3.10
+FROM apache/airflow:2.8.2-python3.10
+COPY requirements.txt /
+USER root
+RUN apt-get update && apt-get install -y curl grep gcc git
+USER airflow
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" -r /requirements.txt
+
