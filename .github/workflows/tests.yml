@@ -1,4 +1,4 @@
-name: Testing recommender_api
+name: Testing ML pipeline
 
 on: push
 
